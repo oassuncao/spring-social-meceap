@@ -10,6 +10,7 @@ public class CeapProfile {
     private Long id;
     private String name;
     private String email;
+    private String uniqueIdentifier;
 
 // --------------------- GETTER / SETTER METHODS ---------------------
 
@@ -35,5 +36,13 @@ public class CeapProfile {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUniqueIdentifier() {
+        return uniqueIdentifier;
+    }
+
+    public void setUniqueIdentifier(String uniqueIdentifier) {
+        this.uniqueIdentifier = uniqueIdentifier;
     }
 }
