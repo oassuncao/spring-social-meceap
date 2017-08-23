@@ -30,7 +30,7 @@ public class CeapAdapter implements ApiAdapter<Ceap> {
     public void setConnectionValues(Ceap api, ConnectionValues values) {
         CeapProfile profile = api.userOperations().getUser();
         values.setDisplayName(profile.getName());
-        values.setProviderUserId(profile.getUniqueIdentifier());
+        values.setProviderUserId(getProviderUserId(profile));
     }
 
     public UserProfile fetchUserProfile(Ceap api) {
@@ -38,7 +38,13 @@ public class CeapAdapter implements ApiAdapter<Ceap> {
         return new UserProfileBuilder()
                 .setName(profile.getName())
                 .setEmail(profile.getEmail())
-                .setUsername(profile.getUniqueIdentifier()).build();
+                .setUsername(getProviderUserId(profile)).build();
+    }
+
+    private static String getProviderUserId(CeapProfile profile) {
+        if (profile.getUniqueIdentifier() == null || profile.getUniqueIdentifier().trim().equals(""))
+            return profile.getEmail();
+        return profile.getUniqueIdentifier();
     }
 
     public void updateStatus(Ceap api, String message) {
