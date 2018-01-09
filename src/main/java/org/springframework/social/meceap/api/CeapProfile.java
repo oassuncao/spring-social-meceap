@@ -7,7 +7,7 @@ package org.springframework.social.meceap.api;
 public class CeapProfile {
 // ------------------------------ FIELDS ------------------------------
 
-    private Long id;
+    private String id;
     private String name;
     private String email;
     private String uniqueIdentifier;
@@ -22,11 +22,11 @@ public class CeapProfile {
         this.email = email;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
