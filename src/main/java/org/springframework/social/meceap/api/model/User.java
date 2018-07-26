@@ -1,13 +1,12 @@
-package org.springframework.social.meceap.api;
+package org.springframework.social.meceap.api.model;
 
 /**
  * @author Silvio Assunção
- * @since 1.0
+ * @since 4.0
  */
-public class CeapProfile {
+public abstract class User {
 // ------------------------------ FIELDS ------------------------------
 
-    private String id;
     private String name;
     private String email;
     private String uniqueIdentifier;
@@ -20,14 +19,6 @@ public class CeapProfile {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {

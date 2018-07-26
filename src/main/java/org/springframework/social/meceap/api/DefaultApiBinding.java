@@ -6,7 +6,7 @@ import org.springframework.social.ApiBinding;
  * @author Silvio Assunção
  * @since 1.0
  */
-public interface Ceap extends ApiBinding {
+public interface DefaultApiBinding extends ApiBinding {
 // -------------------------- OTHER METHODS --------------------------
 
     UserOperations userOperations();
