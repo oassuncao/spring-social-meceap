@@ -6,7 +6,7 @@
 
     <groupId>org.springframework.social</groupId>
     <artifactId>spring-social-meceap</artifactId>
-    <version>4.1.0</version>
+    <version>4.2.0</version>
     <scm>
         <connection>scm:git:https://github.com/oassuncao/spring-social-meceap</connection>
         <developerConnection>scm:git:https://github.com/oassuncao/spring-social-meceap</developerConnection>

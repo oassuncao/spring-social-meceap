@@ -11,7 +11,7 @@ import org.springframework.social.meceap.connect.AbstractAdapter;
 public class CustomAdapter extends AbstractAdapter<CustomUser, CustomApiBinding> {
 // -------------------------- OTHER METHODS --------------------------
 
-    protected Class<CustomUser> getUserClass() {
-        return CustomUser.class;
+    protected CustomUser getUser(CustomApiBinding api) {
+        return api.userOperations().getUser();
     }
 }

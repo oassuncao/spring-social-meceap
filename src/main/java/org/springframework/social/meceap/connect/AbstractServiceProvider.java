@@ -1,6 +1,6 @@
 package org.springframework.social.meceap.connect;
 
-import org.springframework.social.meceap.api.DefaultApiBinding;
+import org.springframework.social.ApiBinding;
 import org.springframework.social.meceap.builder.BaseOperation;
 import org.springframework.social.meceap.builder.BaseOperationBuilder;
 import org.springframework.social.meceap.builder.UserOperation;
@@ -10,7 +10,7 @@ import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
  * @author Silvio Assunção
  * @since 4.0
  */
-public abstract class AbstractServiceProvider<T extends DefaultApiBinding> extends AbstractOAuth2ServiceProvider<T> {
+public abstract class AbstractServiceProvider<T extends ApiBinding> extends AbstractOAuth2ServiceProvider<T> {
 // ------------------------------ FIELDS ------------------------------
 
     protected UserOperation userOperation;

@@ -1,13 +1,13 @@
 package org.springframework.social.meceap.api.custom;
 
-import org.springframework.social.ApiBinding;
+import org.springframework.social.meceap.api.model.custom.CustomUser;
 
 /**
  * @author Silvio Assunção
- * @since 4.0
+ * @since 4.1
  */
-public interface CustomApiBinding extends ApiBinding {
+public interface CustomUserOperations {
 // -------------------------- OTHER METHODS --------------------------
 
-    CustomUserOperations userOperations();
+    CustomUser getUser();
 }

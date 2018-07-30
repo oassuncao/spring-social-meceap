@@ -1,18 +1,18 @@
 package org.springframework.social.meceap.connect;
 
+import org.springframework.social.ApiBinding;
 import org.springframework.social.ApiException;
 import org.springframework.social.connect.ApiAdapter;
 import org.springframework.social.connect.ConnectionValues;
 import org.springframework.social.connect.UserProfile;
 import org.springframework.social.connect.UserProfileBuilder;
-import org.springframework.social.meceap.api.DefaultApiBinding;
 import org.springframework.social.meceap.api.model.User;
 
 /**
  * @author Silvio Assunção
  * @since 4.0
  */
-public abstract class AbstractAdapter<U extends User, A extends DefaultApiBinding> implements ApiAdapter<A> {
+public abstract class AbstractAdapter<U extends User, A extends ApiBinding> implements ApiAdapter<A> {
 // ------------------------ INTERFACE METHODS ------------------------
 
 
@@ -20,7 +20,7 @@ public abstract class AbstractAdapter<U extends User, A extends DefaultApiBindin
 
     public boolean test(A api) {
         try {
-            api.userOperations().getUser(getUserClass());
+            getUser(api);
             return true;
         } catch (ApiException e) {
             return false;
@@ -29,14 +29,14 @@ public abstract class AbstractAdapter<U extends User, A extends DefaultApiBindin
 
     @SuppressWarnings("unchecked")
     public void setConnectionValues(A api, ConnectionValues values) {
-        U user = api.userOperations().getUser(getUserClass());
+        U user = getUser(api);
         values.setDisplayName(user.getName());
         values.setProviderUserId(getProviderUserId(user));
     }
 
     @SuppressWarnings("unchecked")
     public UserProfile fetchUserProfile(A api) {
-        U user = api.userOperations().getUser(getUserClass());
+        U user = getUser(api);
         return new UserProfileBuilder()
                 .setName(user.getName())
                 .setEmail(user.getEmail())
@@ -44,7 +44,7 @@ public abstract class AbstractAdapter<U extends User, A extends DefaultApiBindin
                 .build();
     }
 
-    public void updateStatus(A defaultApiBinding, String message) {
+    public void updateStatus(A api, String message) {
 
     }
 
@@ -54,5 +54,5 @@ public abstract class AbstractAdapter<U extends User, A extends DefaultApiBindin
         return user.getUniqueIdentifier();
     }
 
-    protected abstract Class<U> getUserClass();
+    protected abstract U getUser(A api);
 }

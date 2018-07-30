@@ -18,7 +18,7 @@ public class CeapAdapter extends AbstractAdapter<CeapUser, CeapApiBinding> {
         return user.getUniqueIdentifier();
     }
 
-    protected Class<CeapUser> getUserClass() {
-        return CeapUser.class;
+    protected CeapUser getUser(CeapApiBinding api) {
+        return api.userOperations().getUser();
     }
 }
