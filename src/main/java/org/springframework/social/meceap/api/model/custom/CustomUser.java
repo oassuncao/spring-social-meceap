@@ -1,7 +1,11 @@
 package org.springframework.social.meceap.api.model.custom;
 
-import org.springframework.social.meceap.api.model.Profile;
+import org.springframework.social.meceap.api.model.Application;
 import org.springframework.social.meceap.api.model.User;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import java.util.List;
 
 /**
  * @author Silvio Assunção
@@ -10,15 +14,17 @@ import org.springframework.social.meceap.api.model.User;
 public class CustomUser extends User {
 // ------------------------------ FIELDS ------------------------------
 
-    private Profile profile;
+    private List<Application> applications;
 
 // --------------------- GETTER / SETTER METHODS ---------------------
 
-    public Profile getProfile() {
-        return profile;
+    @XmlElementWrapper(name = "applications")
+    @XmlElement(name = "application")
+    public List<Application> getApplications() {
+        return applications;
     }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
+    public void setApplications(List<Application> applications) {
+        this.applications = applications;
     }
 }

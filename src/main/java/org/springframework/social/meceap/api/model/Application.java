@@ -1,5 +1,6 @@
 package org.springframework.social.meceap.api.model;
 
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import java.util.List;
@@ -36,6 +37,7 @@ public class Application {
     }
 // --------------------- GETTER / SETTER METHODS ---------------------
 
+    @XmlAttribute
     public String getName() {
         return name;
     }
