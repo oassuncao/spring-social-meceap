@@ -12,13 +12,13 @@ import org.springframework.social.meceap.api.model.User;
  * @author Silvio Assunção
  * @since 4.0
  */
-public abstract class AbstractAdapter<U extends User> implements ApiAdapter<DefaultApiBinding> {
+public abstract class AbstractAdapter<U extends User, A extends DefaultApiBinding> implements ApiAdapter<A> {
 // ------------------------ INTERFACE METHODS ------------------------
 
 
 // --------------------- Interface ApiAdapter ---------------------
 
-    public boolean test(DefaultApiBinding api) {
+    public boolean test(A api) {
         try {
             api.userOperations().getUser(getUserClass());
             return true;
@@ -28,14 +28,14 @@ public abstract class AbstractAdapter<U extends User> implements ApiAdapter<Defa
     }
 
     @SuppressWarnings("unchecked")
-    public void setConnectionValues(DefaultApiBinding api, ConnectionValues values) {
+    public void setConnectionValues(A api, ConnectionValues values) {
         U user = api.userOperations().getUser(getUserClass());
         values.setDisplayName(user.getName());
         values.setProviderUserId(getProviderUserId(user));
     }
 
     @SuppressWarnings("unchecked")
-    public UserProfile fetchUserProfile(DefaultApiBinding api) {
+    public UserProfile fetchUserProfile(A api) {
         U user = api.userOperations().getUser(getUserClass());
         return new UserProfileBuilder()
                 .setName(user.getName())
@@ -44,7 +44,7 @@ public abstract class AbstractAdapter<U extends User> implements ApiAdapter<Defa
                 .build();
     }
 
-    public void updateStatus(DefaultApiBinding defaultApiBinding, String message) {
+    public void updateStatus(A defaultApiBinding, String message) {
 
     }
 

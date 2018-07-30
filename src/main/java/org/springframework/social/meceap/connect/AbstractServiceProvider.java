@@ -10,7 +10,7 @@ import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
  * @author Silvio Assunção
  * @since 4.0
  */
-public abstract class AbstractServiceProvider extends AbstractOAuth2ServiceProvider<DefaultApiBinding> {
+public abstract class AbstractServiceProvider<T extends DefaultApiBinding> extends AbstractOAuth2ServiceProvider<T> {
 // ------------------------------ FIELDS ------------------------------
 
     protected UserOperation userOperation;

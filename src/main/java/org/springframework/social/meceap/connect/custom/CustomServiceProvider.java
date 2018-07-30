@@ -1,7 +1,6 @@
 package org.springframework.social.meceap.connect.custom;
 
-import org.springframework.social.meceap.api.DefaultApiBinding;
-import org.springframework.social.meceap.api.impl.DefaultTemplate;
+import org.springframework.social.meceap.api.custom.CustomApiBinding;
 import org.springframework.social.meceap.builder.BaseOperation;
 import org.springframework.social.meceap.builder.UserOperation;
 import org.springframework.social.meceap.connect.AbstractServiceProvider;
@@ -10,7 +9,7 @@ import org.springframework.social.meceap.connect.AbstractServiceProvider;
  * @author Silvio Assunção
  * @since 4.0
  */
-public class CustomServiceProvider extends AbstractServiceProvider {
+public class CustomServiceProvider extends AbstractServiceProvider<CustomApiBinding> {
 // ------------------------------ FIELDS ------------------------------
 
     private final String providerId;
@@ -32,7 +31,7 @@ public class CustomServiceProvider extends AbstractServiceProvider {
 
 // --------------------- Interface OAuth2ServiceProvider ---------------------
 
-    public DefaultApiBinding getApi(String accessToken) {
-        return new DefaultTemplate(providerId, accessToken, userOperation);
+    public CustomApiBinding getApi(String accessToken) {
+        return new CustomTemplate(providerId, accessToken, userOperation);
     }
 }
