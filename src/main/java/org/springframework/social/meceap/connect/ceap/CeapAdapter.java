@@ -11,13 +11,6 @@ import org.springframework.social.meceap.connect.AbstractAdapter;
 public class CeapAdapter extends AbstractAdapter<CeapUser, CeapApiBinding> {
 // -------------------------- OTHER METHODS --------------------------
 
-    @Override
-    protected String getProviderUserId(CeapUser user) {
-        if (user.getUniqueIdentifier() == null || user.getUniqueIdentifier().trim().equals(""))
-            return user.getEmail();
-        return user.getUniqueIdentifier();
-    }
-
     protected CeapUser getUser(CeapApiBinding api) {
         return api.userOperations().getUser();
     }

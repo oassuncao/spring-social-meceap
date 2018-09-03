@@ -51,6 +51,8 @@ public abstract class AbstractAdapter<U extends User, A extends ApiBinding> impl
 // -------------------------- OTHER METHODS --------------------------
 
     protected String getProviderUserId(U user) {
+        if (user.getUniqueIdentifier() == null || user.getUniqueIdentifier().trim().equals(""))
+            return user.getEmail();
         return user.getUniqueIdentifier();
     }
 
